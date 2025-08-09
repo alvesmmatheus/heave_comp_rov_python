@@ -19,10 +19,10 @@ O modelo representa a malha de controle de forma simplificada:
 - **Guincho**: modelo de 2ª ordem com **inércia \(J\)** e **atrito viscoso \(b\)**.
 - **Encoder**: realimenta a posição do cabo para fechar a malha.
 
-Um diagrama minimalista de blocos:
-```
+Diagrama de Blocos do sistema:
+
 ![Diagrama de Blocos](Diagrama_Simplificado.png)
-```
+
 
 ---
 
