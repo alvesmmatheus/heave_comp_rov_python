@@ -21,59 +21,12 @@ O modelo representa a malha de controle de forma simplificada:
 
 Um diagrama minimalista de blocos:
 ```
-    Heave (MRU) → [PID] → [Válvula prop.] → [Guincho J,b] → θ
-                                    ↑________________________↓ (Encoder)
+![Diagrama de Blocos](Diagrama_Simplificado.png)
 ```
 
 ---
 
-## 3. Modelagem Matemática
-
-**Guincho (2ª ordem):**
-\[
-\dot{\theta} = \omega,\quad 
-\dot{\omega} = \frac{T_m - b\,\omega}{J}
-\]
-
-**PID:**
-\[
-u(t) = K_p\,e(t) + K_i \int e(t)\,dt + K_d\,\frac{de(t)}{dt}
-\]
-
-**Não linearidades (atuador):**
-- Zona morta: \( |u| < 0{,}1 \Rightarrow T_m = 0 \)
-- Saturação de torque: \( |T_m| \le 100 \,\text{N·m} \)
-
-**Modelagem do heave \(h(t)\):**
-
-- **Mar calmo**: \( h(t) = 1{,}0 \sin(2\pi \cdot 0{,}1\,t) + 0{,}02\,\mathcal{N}(0,1) \)
-- **Mar médio**: \( h(t) = 1{,}5 \sin(2\pi \cdot 0{,}2\,t) + 0{,}05\,\mathcal{N}(0,1) \)
-- **Mar agitado**:
-  \[
-  h(t) = 2{,}0 \sin(2\pi \cdot 0{,}25\,t) + 0{,}5 \sin(2\pi \cdot 1{,}5\,t) + 0{,}2\,\mathcal{N}(0,1)
-  \]
-
----
-
-## 4. Implementação em Python
-**Stack:** `numpy`, `scipy.integrate.solve_ivp`, `matplotlib`.
-
-Estrutura principal do código (`ahc_simulacao.py`):
-```python
-class PID: ...
-def gerar_heave(t, tipo): ...
-def modelo_ahc(t_now, y, ref_signal): ...
-sol = solve_ivp(modelo_ahc, [0, t_final], y0, t_eval=t, args=(heave,), method='RK45')
-```
-
-Parâmetros utilizados (exemplo):
-- \(K_p = 5\times10^4\), \(K_i = 2\times10^3\), \(K_d = 1\times10^4\)
-- \(J = 5.0\), \(b = 2.0\)
-- Zona morta = 0.1; Saturação de torque = ±100 N·m
-
----
-
-## 5. Resultados
+## 3. Resultados
 **Gráficos** (exemplos gerados):
 - `plot_ahc_calmo_anotado.png`
 - `plot_ahc_medio_anotado.png`
@@ -92,7 +45,7 @@ Parâmetros utilizados (exemplo):
 
 ---
 
-## 6. Como rodar
+## 4. Como rodar
 ```bash
 # criar venv (opcional)
 python -m venv .venv && . .venv/bin/activate  # Windows: .venv\Scripts\activate
@@ -106,7 +59,7 @@ python ahc_simulacao.py
 
 ---
 
-## 7. Estrutura do Projeto
+## 5. Estrutura do Projeto
 ```text
 ahc-rov-sim/
 ├── ahc_simulacao.py
@@ -120,5 +73,5 @@ ahc-rov-sim/
 
 ---
 
-## 8. Licença
+## 6. Licença
 Livre para uso educacional e demonstração de portfólio.
