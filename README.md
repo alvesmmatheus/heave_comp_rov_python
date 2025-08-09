@@ -63,6 +63,7 @@ python ahc_simulacao.py
 ```text
 ahc-rov-sim/
 ├── ahc_simulacao.py
+├── Diagrama_Simplificado.png
 ├── plot_ahc_calmo_anotado.png
 ├── plot_ahc_medio_anotado.png
 ├── plot_ahc_agitado_anotado.png
