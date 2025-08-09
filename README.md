@@ -1,6 +1,8 @@
 
 # Active Heave Compensation (AHC) para ROV – Simulação em Python
 
+📄 [Baixar o estudo completo em PDF](Estudo_AHC_Python.pdf)
+
 ## 1. Introdução
 Em operações offshore com ROVs (Remotely Operated Vehicles), o movimento vertical da embarcação causado por ondas — **heave** — é transmitido ao veículo pelo umbilical. Esse movimento pode prejudicar inspeções e intervenções, aumentando riscos e desgaste do sistema.
 
